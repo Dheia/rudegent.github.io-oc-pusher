@@ -1,0 +1,780 @@
+1575063543a:1:{s:11:"contact.htm";a:19:{s:8:"fileName";s:11:"contact.htm";s:7:"content";s:13107:"title = "Contact Us"
+url = "/contact"
+layout = "front"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 1
+logged_only = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[viewBag]
+
+[simpleContact]
+nameTitle = "Full Name"
+emailTitle = "Email"
+phoneTitle = "Phone"
+subjectTitle = "Subject"
+messageTitle = "Message"
+buttonText = "Submit"
+displayPhone = 1
+==
+<?php
+function onStart(){
+	$this['branches']	=	\Spot\Shipment\Models\Office::get();
+}
+?>
+==
+<!-- Google maps slideshow element + Bottom mask style 5 -->
+		<div class="kl-slideshow static-content__slideshow scontent__maps">
+			<!-- Map with custom height -->
+			<div class="th-google_map" style="height: 750px;">
+			</div>
+			<!-- end map -->
+
+			<!-- Google map content panel -->
+			<div class="kl-contentmaps__panel">
+				<a href="#" class="js-toggle-class kl-contentmaps__panel-tgg hidden-xs" data-target=".kl-contentmaps__panel" data-target-class="is-closed"></a>
+				<!-- Image & Image pop-up -->
+				<a href="images/home-office-569359_640.jpg" data-lightbox="image" class="kl-contentmaps__panel-img" style="background-image: url(./front/images/home-office-569359_640.jpg);"></a>
+
+				<!-- Content -->
+				<div class="kl-contentmaps__panel-info">
+					<!-- Title -->
+					<h5 class="kl-contentmaps__panel-title">
+						{{ settings.company.title|__ }}
+					</h5>
+
+					<!-- Description -->
+					<div class="kl-contentmaps__panel-info-text">
+						<p>
+							{{ settings.company.description|__ }}
+						</p>
+					</div>
+				</div>
+				<!--/ Content -->
+			</div>
+			<!-- Google map content panel -->
+
+			<!-- Bottom mask style 5 -->
+			<div class="kl-bottommask kl-bottommask--mask5">
+				<svg width="2700px" height="64px" class="svgmask" viewBox="0 0 2700 64" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+					<defs>
+						<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-mask5">
+							<feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+							<feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+							<feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+							<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.45 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+							<feMerge>
+								<feMergeNode in="SourceGraphic"></feMergeNode>
+								<feMergeNode in="shadowMatrixInner1"></feMergeNode>
+							</feMerge>
+						</filter>
+					</defs>
+					<path d="M1892,0 L2119,44.993 L2701,45 L2701.133,63.993 L-0.16,63.993 L1.73847048e-12,45 L909,44.993 L1892,0 Z" class="bmask-bgfill" fill="#fbfbfb" filter="url(#filter-mask5)"></path>
+					<path d="M2216,44.993 L2093,55 L1882,6 L995,62 L966,42 L1892,0 L2118,44.993 L2216,44.993 L2216,44.993 Z" fill="#cd2122" class="bmask-customfill" filter="url(#filter-mask5)"></path>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 5 -->
+		</div>
+		<!--/ Google maps slideshow element + Bottom mask style 5 -->
+
+
+		<!-- Contact form element & details section with custom paddings -->
+		<section class="hg_section pt-80 pb-80">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-9 col-lg-9 mb-sm-30">
+						<!-- Contact form element -->
+						<div class="contactForm">
+
+							<form id="simpleContactForm" data-request="{{ simpleContact }}::onFormSubmit" class="contact_form row" >
+								{{form_token()}}
+								{{form_sessionKey()}}
+
+							    <div id="simple_contact_flash_message"></div>
+
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="name" id="cf_name" class="form-control" placeholder="{{"Please enter your name"|__}}" required >
+									<label class="control-label">
+										{{"FULL NAME"|__}}
+									</label>
+								</div>
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="email" id="cf_email" class="form-control h5-email" placeholder="{{"Please enter your email address"|__}}" value=""  required>
+									<label class="control-label">
+										{{"EMAIL"|__}}
+									</label>
+								</div>
+
+							    {% if(simpleContact.properties.phoneEnabled) %}
+									<div class="col-sm-12 kl-fancy-form">
+										<input type="text" name="phone" id="cf_phone" class="form-control" placeholder="{{"Please enter your phone number"|__}}" value=""  required>
+										<label class="control-label">
+											{{"PHONE"|__}}
+										</label>
+									</div>
+								{% endif %}
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="subject" id="cf_subject" class="form-control" placeholder="{{"Enter the subject message"|__}}" value=""  required>
+									<label class="control-label">
+										{{"SUBJECT"|__}}
+									</label>
+								</div>
+
+								<div class="col-sm-12 kl-fancy-form">
+									<textarea name="message" id="cf_message" class="form-control" cols="30" rows="10" placeholder="{{"Your message"|__}}" tabindex="4" required></textarea>
+									<label class="control-label">
+										{{"MESSAGE"|__}}
+									</label>
+								</div>
+
+								<div class="form-group">
+										<label for="message"></label>
+										<div class="g-recaptcha" data-sitekey="{{settings.google.recaptcha.key}}"></div>
+									</div>
+
+								<div class="col-sm-12">
+									<!-- Contact form send button -->
+									<button class="btn btn-fullcolor" type="submit" id="simpleContactSubmitButton">
+										{{"Send"|__}}
+									</button>
+								</div>
+
+							</form>
+
+						</div>
+						<!--/ Contact form element -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-30 -->
+
+					<div class="col-sm-12 col-md-3 col-lg-3">
+						<!-- Contact details -->
+						<div class="text_box">
+							<!-- Title -->
+							<h3 class="text_box-title text_box-title--style2">
+								{{"CONTACT INFO"|__}}
+							</h3>
+
+							<!-- Sub-title -->
+							<h4>{{ settings.company.address }}{% if settings.company.county %}, {{ settings.company.county }}{% endif %}{% if settings.company.city %}, {{ settings.company.city }}{% endif %}{% if settings.company.state %}, {{ settings.company.state }}{% endif %}{% if settings.company.country %}, {{ settings.company.country }}{% endif %}</h4>
+
+							<!-- Description -->
+							<p>
+								{% if settings.company.company_phone %}
+									{{ settings.company.company_phone }}<br>
+								{% endif %}
+								{% if settings.company.company_phone_2 %}
+								{{ settings.company.company_phone_2 }}<br>
+								{% endif %}
+								{% if settings.company.company_phone_3 %}
+								{{ settings.company.company_phone_3 }}<br>
+								{% endif %}
+							</p>
+
+							<p>
+								<a href="mailto:{{ settings.company.primary_email }}">{{ settings.company.primary_email }}</a><br>
+								<a href="{{url('/')}}">{{url('/')|replace({'http://':'','https://':''})}}</a>
+							</p>
+						</div>
+						<!--/ Contact details -->
+					</div>
+					<!--/ col-sm-12 col-md-3 col-lg-3 -->
+				</div>
+				<!--/ .row -->
+			</div>
+			<!--/ .container -->
+		</section>
+		<!--/ Contact form element & details section with custom paddings -->
+
+		<!-- Title with Call to Action Button section with custom paddings -->
+		<section class="hg_section bg-white pt-60 pb-60">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 mb-sm-20">
+						<!-- Title with alternative font and custom weight and default color -->
+						<h3 class="tbk__title kl-font-alt fw-semibold tcolor">
+							{{'WORK WITH US'|__}}
+						</h3>
+						<!--/ Title with alternative font and custom weight and default color -->
+
+						<!-- Sub-Title -->
+						<h4 class="tbk__subtitle fw-thin">
+							{{"We'll do everything we can to make you a satisfied customer!"|__}}
+						</h4>
+						<!--/ Sub-Title -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-20 -->
+
+					<!--/ col-sm-12 col-md-3 col-lg-3 align-self-center -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Title with Call to Action Button section with custom paddings -->
+
+{% put scripts %}<!-- JS FILES // Loaded on this page -->
+<!-- Required js scripts files for Google Maps element (create and use your API Key bellow) https://developers.google.com/maps/documentation/javascript/get-api-key -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{settings.google.map.key}}"></script>
+<script type="text/javascript" src="./front/js/plugins/jquery.gmap.min.js"></script>
+
+<!-- Requried js trigger file for Google Maps element -->
+<script type="text/javascript">
+;(function($){
+	"use strict";
+
+	$(document).ready(function() {
+
+		/*
+		Find the Latitude and Longitude of your address:
+			- http://itouchmap.com/latlong.html
+			- http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+			- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+		Find settings explained:
+			- https://github.com/marioestrada/jQuery-gMap
+
+		*/
+
+		// Map Markers
+		var mapMarkers = [
+				{
+				//address: "{{ settings.company.address }}",
+				latitude: {{ settings.company.lat }},
+				longitude: {{ settings.company.lng }},
+				icon: {
+					image: "./front/images/map-marker.png",
+					iconsize: [32, 39], // w, h
+					iconanchor: [13,39] // x, y
+				},
+				html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">{{ settings.company.title|__ }}</span></h3><p class="nobottommargin"><span style="line-height:1.4;">{{ settings.company.address }}</span></p></div>',
+			},
+			{% for branch in branches %}
+				{% if branch.lat %}
+					{
+						//address: "{{ settings.company.address }}",
+						latitude: {{branch.lat}},
+						longitude: {{branch.lng}},
+						icon: {
+							image: "./front/images/map-marker.png",
+							iconsize: [32, 39], // w, h
+							iconanchor: [13,39] // x, y
+						},
+						html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">{{ settings.company.title|__ }}</span></h3><p class="nobottommargin"><span style="line-height:1.4;">{{ branch.street }}</span></p></div>',
+					},
+				{% endif %}
+			{% endfor %}
+		];
+
+		// Map Color Scheme - more styles here http://snazzymaps.com/
+		var mapStyles = [
+		    {
+		        "featureType": "landscape",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "lightness": 60
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.local",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "lightness": 40
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "transit",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "visibility": "simplified"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "administrative.province",
+		        "stylers": [
+		            {
+		                "visibility": "off"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "water",
+		        "stylers": [
+		            {
+		                "visibility": "on"
+		            },
+		            {
+		                "lightness": 30
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "color": "#ef8c25"
+		            },
+		            {
+		                "lightness": 40
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway",
+		        "elementType": "geometry.stroke",
+		        "stylers": [
+		            {
+		                "visibility": "off"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi.park",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "color": "#b6c54c"
+		            },
+		            {
+		                "lightness": 40
+		            },
+		            {
+		                "saturation": -40
+		            }
+		        ]
+		    },
+		    {}
+		];
+
+		// Map Initial Location
+		var initLatitude = {{ settings.company.lat }};
+		var initLongitude = {{ settings.company.lng }};
+
+		// Map Extended Settings
+		var map = jQuery(".th-google_map").gMap({
+			controls: {
+				panControl: true,
+				zoomControl: true,
+				zoomControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				mapTypeControl: true,
+				scaleControl: true,
+				streetViewControl: true,
+				streetViewControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				overviewMapControl: true
+			},
+			scrollwheel: false,
+			markers: mapMarkers,
+			latitude: initLatitude,
+			longitude: initLongitude,
+			zoom: 8,
+			style: mapStyles,
+			draggable: Modernizr.touch ? false : true
+		});
+	});// end of document ready
+
+})(jQuery);
+</script>
+{% endput %}
+";s:5:"mtime";i:1575035854;s:6:"markup";s:12625:"<!-- Google maps slideshow element + Bottom mask style 5 -->
+		<div class="kl-slideshow static-content__slideshow scontent__maps">
+			<!-- Map with custom height -->
+			<div class="th-google_map" style="height: 750px;">
+			</div>
+			<!-- end map -->
+
+			<!-- Google map content panel -->
+			<div class="kl-contentmaps__panel">
+				<a href="#" class="js-toggle-class kl-contentmaps__panel-tgg hidden-xs" data-target=".kl-contentmaps__panel" data-target-class="is-closed"></a>
+				<!-- Image & Image pop-up -->
+				<a href="images/home-office-569359_640.jpg" data-lightbox="image" class="kl-contentmaps__panel-img" style="background-image: url(./front/images/home-office-569359_640.jpg);"></a>
+
+				<!-- Content -->
+				<div class="kl-contentmaps__panel-info">
+					<!-- Title -->
+					<h5 class="kl-contentmaps__panel-title">
+						{{ settings.company.title|__ }}
+					</h5>
+
+					<!-- Description -->
+					<div class="kl-contentmaps__panel-info-text">
+						<p>
+							{{ settings.company.description|__ }}
+						</p>
+					</div>
+				</div>
+				<!--/ Content -->
+			</div>
+			<!-- Google map content panel -->
+
+			<!-- Bottom mask style 5 -->
+			<div class="kl-bottommask kl-bottommask--mask5">
+				<svg width="2700px" height="64px" class="svgmask" viewBox="0 0 2700 64" version="1.1" xmlns="https://www.w3.org/2000/svg" xmlns:xlink="https://www.w3.org/1999/xlink">
+					<defs>
+						<filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-mask5">
+							<feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetInner1"></feOffset>
+							<feGaussianBlur stdDeviation="1.5" in="shadowOffsetInner1" result="shadowBlurInner1"></feGaussianBlur>
+							<feComposite in="shadowBlurInner1" in2="SourceAlpha" operator="arithmetic" k2="-1" k3="1" result="shadowInnerInner1"></feComposite>
+							<feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.45 0" in="shadowInnerInner1" type="matrix" result="shadowMatrixInner1"></feColorMatrix>
+							<feMerge>
+								<feMergeNode in="SourceGraphic"></feMergeNode>
+								<feMergeNode in="shadowMatrixInner1"></feMergeNode>
+							</feMerge>
+						</filter>
+					</defs>
+					<path d="M1892,0 L2119,44.993 L2701,45 L2701.133,63.993 L-0.16,63.993 L1.73847048e-12,45 L909,44.993 L1892,0 Z" class="bmask-bgfill" fill="#fbfbfb" filter="url(#filter-mask5)"></path>
+					<path d="M2216,44.993 L2093,55 L1882,6 L995,62 L966,42 L1892,0 L2118,44.993 L2216,44.993 L2216,44.993 Z" fill="#cd2122" class="bmask-customfill" filter="url(#filter-mask5)"></path>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 5 -->
+		</div>
+		<!--/ Google maps slideshow element + Bottom mask style 5 -->
+
+
+		<!-- Contact form element & details section with custom paddings -->
+		<section class="hg_section pt-80 pb-80">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-9 col-lg-9 mb-sm-30">
+						<!-- Contact form element -->
+						<div class="contactForm">
+
+							<form id="simpleContactForm" data-request="{{ simpleContact }}::onFormSubmit" class="contact_form row" >
+								{{form_token()}}
+								{{form_sessionKey()}}
+
+							    <div id="simple_contact_flash_message"></div>
+
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="name" id="cf_name" class="form-control" placeholder="{{"Please enter your name"|__}}" required >
+									<label class="control-label">
+										{{"FULL NAME"|__}}
+									</label>
+								</div>
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="email" id="cf_email" class="form-control h5-email" placeholder="{{"Please enter your email address"|__}}" value=""  required>
+									<label class="control-label">
+										{{"EMAIL"|__}}
+									</label>
+								</div>
+
+							    {% if(simpleContact.properties.phoneEnabled) %}
+									<div class="col-sm-12 kl-fancy-form">
+										<input type="text" name="phone" id="cf_phone" class="form-control" placeholder="{{"Please enter your phone number"|__}}" value=""  required>
+										<label class="control-label">
+											{{"PHONE"|__}}
+										</label>
+									</div>
+								{% endif %}
+
+								<div class="col-sm-12 kl-fancy-form">
+									<input type="text" name="subject" id="cf_subject" class="form-control" placeholder="{{"Enter the subject message"|__}}" value=""  required>
+									<label class="control-label">
+										{{"SUBJECT"|__}}
+									</label>
+								</div>
+
+								<div class="col-sm-12 kl-fancy-form">
+									<textarea name="message" id="cf_message" class="form-control" cols="30" rows="10" placeholder="{{"Your message"|__}}" tabindex="4" required></textarea>
+									<label class="control-label">
+										{{"MESSAGE"|__}}
+									</label>
+								</div>
+
+								<div class="form-group">
+										<label for="message"></label>
+										<div class="g-recaptcha" data-sitekey="{{settings.google.recaptcha.key}}"></div>
+									</div>
+
+								<div class="col-sm-12">
+									<!-- Contact form send button -->
+									<button class="btn btn-fullcolor" type="submit" id="simpleContactSubmitButton">
+										{{"Send"|__}}
+									</button>
+								</div>
+
+							</form>
+
+						</div>
+						<!--/ Contact form element -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-30 -->
+
+					<div class="col-sm-12 col-md-3 col-lg-3">
+						<!-- Contact details -->
+						<div class="text_box">
+							<!-- Title -->
+							<h3 class="text_box-title text_box-title--style2">
+								{{"CONTACT INFO"|__}}
+							</h3>
+
+							<!-- Sub-title -->
+							<h4>{{ settings.company.address }}{% if settings.company.county %}, {{ settings.company.county }}{% endif %}{% if settings.company.city %}, {{ settings.company.city }}{% endif %}{% if settings.company.state %}, {{ settings.company.state }}{% endif %}{% if settings.company.country %}, {{ settings.company.country }}{% endif %}</h4>
+
+							<!-- Description -->
+							<p>
+								{% if settings.company.company_phone %}
+									{{ settings.company.company_phone }}<br>
+								{% endif %}
+								{% if settings.company.company_phone_2 %}
+								{{ settings.company.company_phone_2 }}<br>
+								{% endif %}
+								{% if settings.company.company_phone_3 %}
+								{{ settings.company.company_phone_3 }}<br>
+								{% endif %}
+							</p>
+
+							<p>
+								<a href="mailto:{{ settings.company.primary_email }}">{{ settings.company.primary_email }}</a><br>
+								<a href="{{url('/')}}">{{url('/')|replace({'http://':'','https://':''})}}</a>
+							</p>
+						</div>
+						<!--/ Contact details -->
+					</div>
+					<!--/ col-sm-12 col-md-3 col-lg-3 -->
+				</div>
+				<!--/ .row -->
+			</div>
+			<!--/ .container -->
+		</section>
+		<!--/ Contact form element & details section with custom paddings -->
+
+		<!-- Title with Call to Action Button section with custom paddings -->
+		<section class="hg_section bg-white pt-60 pb-60">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 mb-sm-20">
+						<!-- Title with alternative font and custom weight and default color -->
+						<h3 class="tbk__title kl-font-alt fw-semibold tcolor">
+							{{'WORK WITH US'|__}}
+						</h3>
+						<!--/ Title with alternative font and custom weight and default color -->
+
+						<!-- Sub-Title -->
+						<h4 class="tbk__subtitle fw-thin">
+							{{"We'll do everything we can to make you a satisfied customer!"|__}}
+						</h4>
+						<!--/ Sub-Title -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-20 -->
+
+					<!--/ col-sm-12 col-md-3 col-lg-3 align-self-center -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Title with Call to Action Button section with custom paddings -->
+
+{% put scripts %}<!-- JS FILES // Loaded on this page -->
+<!-- Required js scripts files for Google Maps element (create and use your API Key bellow) https://developers.google.com/maps/documentation/javascript/get-api-key -->
+<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key={{settings.google.map.key}}"></script>
+<script type="text/javascript" src="./front/js/plugins/jquery.gmap.min.js"></script>
+
+<!-- Requried js trigger file for Google Maps element -->
+<script type="text/javascript">
+;(function($){
+	"use strict";
+
+	$(document).ready(function() {
+
+		/*
+		Find the Latitude and Longitude of your address:
+			- http://itouchmap.com/latlong.html
+			- http://universimmedia.pagesperso-orange.fr/geo/loc.htm
+			- http://www.findlatitudeandlongitude.com/find-address-from-latitude-and-longitude/
+
+		Find settings explained:
+			- https://github.com/marioestrada/jQuery-gMap
+
+		*/
+
+		// Map Markers
+		var mapMarkers = [
+				{
+				//address: "{{ settings.company.address }}",
+				latitude: {{ settings.company.lat }},
+				longitude: {{ settings.company.lng }},
+				icon: {
+					image: "./front/images/map-marker.png",
+					iconsize: [32, 39], // w, h
+					iconanchor: [13,39] // x, y
+				},
+				html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">{{ settings.company.title|__ }}</span></h3><p class="nobottommargin"><span style="line-height:1.4;">{{ settings.company.address }}</span></p></div>',
+			},
+			{% for branch in branches %}
+				{% if branch.lat %}
+					{
+						//address: "{{ settings.company.address }}",
+						latitude: {{branch.lat}},
+						longitude: {{branch.lng}},
+						icon: {
+							image: "./front/images/map-marker.png",
+							iconsize: [32, 39], // w, h
+							iconanchor: [13,39] // x, y
+						},
+						html: '<div style="width: 300px; padding: 15px;"><h3 style="margin-bottom: 15px;">{{ settings.company.title|__ }}</span></h3><p class="nobottommargin"><span style="line-height:1.4;">{{ branch.street }}</span></p></div>',
+					},
+				{% endif %}
+			{% endfor %}
+		];
+
+		// Map Color Scheme - more styles here http://snazzymaps.com/
+		var mapStyles = [
+		    {
+		        "featureType": "landscape",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "lightness": 60
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.local",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "lightness": 40
+		            },
+		            {
+		                "visibility": "on"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "transit",
+		        "stylers": [
+		            {
+		                "saturation": -100
+		            },
+		            {
+		                "visibility": "simplified"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "administrative.province",
+		        "stylers": [
+		            {
+		                "visibility": "off"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "water",
+		        "stylers": [
+		            {
+		                "visibility": "on"
+		            },
+		            {
+		                "lightness": 30
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "color": "#ef8c25"
+		            },
+		            {
+		                "lightness": 40
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "road.highway",
+		        "elementType": "geometry.stroke",
+		        "stylers": [
+		            {
+		                "visibility": "off"
+		            }
+		        ]
+		    },
+		    {
+		        "featureType": "poi.park",
+		        "elementType": "geometry.fill",
+		        "stylers": [
+		            {
+		                "color": "#b6c54c"
+		            },
+		            {
+		                "lightness": 40
+		            },
+		            {
+		                "saturation": -40
+		            }
+		        ]
+		    },
+		    {}
+		];
+
+		// Map Initial Location
+		var initLatitude = {{ settings.company.lat }};
+		var initLongitude = {{ settings.company.lng }};
+
+		// Map Extended Settings
+		var map = jQuery(".th-google_map").gMap({
+			controls: {
+				panControl: true,
+				zoomControl: true,
+				zoomControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				mapTypeControl: true,
+				scaleControl: true,
+				streetViewControl: true,
+				streetViewControlOptions: {
+					position: google.maps.ControlPosition.RIGHT_CENTER
+				},
+				overviewMapControl: true
+			},
+			scrollwheel: false,
+			markers: mapMarkers,
+			latitude: initLatitude,
+			longitude: initLongitude,
+			zoom: 8,
+			style: mapStyles,
+			draggable: Modernizr.touch ? false : true
+		});
+	});// end of document ready
+
+})(jQuery);
+</script>
+{% endput %}";s:4:"code";s:79:"function onStart(){
+	$this['branches']	=	\Spot\Shipment\Models\Office::get();
+}";s:5:"title";s:10:"Contact Us";s:3:"url";s:8:"/contact";s:6:"layout";s:5:"front";s:9:"is_hidden";s:1:"0";s:4:"role";s:1:"0";s:10:"permission";s:1:"0";s:14:"anonymous_only";s:1:"1";s:11:"logged_only";s:1:"0";s:8:"child_of";s:4:"home";s:10:"hide_crumb";s:1:"0";s:18:"remove_crumb_trail";s:1:"0";s:14:"crumb_disabled";s:1:"0";s:7:"viewBag";a:0:{}s:13:"simpleContact";a:7:{s:9:"nameTitle";s:9:"Full Name";s:10:"emailTitle";s:5:"Email";s:10:"phoneTitle";s:5:"Phone";s:12:"subjectTitle";s:7:"Subject";s:12:"messageTitle";s:7:"Message";s:10:"buttonText";s:6:"Submit";s:12:"displayPhone";s:1:"1";}}}

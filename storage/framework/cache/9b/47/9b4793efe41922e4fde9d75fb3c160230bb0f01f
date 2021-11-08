@@ -1,0 +1,497 @@
+1578683967a:1:{s:16:"applications.htm";a:18:{s:8:"fileName";s:16:"applications.htm";s:7:"content";s:9056:"title = "Applications"
+url = "/applications"
+layout = "front"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 1
+logged_only = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[viewBag]
+==
+<?php
+function onStart(){
+}
+?>
+==
+<!-- Page Sub-Header + mask style 6 -->
+		<div id="page_header" class="page-subheader site-subheader-cst uh_hg_def_header_style maskcontainer--mask6">
+			<div class="bgback"></div>
+
+			<!-- Bakcground -->
+			<div class="kl-bg-source">
+				<!-- Background image -->
+				<div class="kl-bg-source__bgimage" style="background-image: url(./front/images/about-me.jpg); background-repeat: no-repeat; background-attachment: scroll; background-position-x: center; background-position-y: center; background-size: cover;">
+				</div>
+				<!--/ Background image -->
+
+				<!-- Gradient overlay -->
+				<div class="kl-bg-source__overlay" style="">
+				</div>
+				<!--/ Gradient overlay -->
+			</div>
+			<!--/ Bakcground -->
+
+			<!-- Animated Sparkles -->
+			<div class="th-sparkles"></div>
+			<!--/ Animated Sparkles -->
+
+					<!-- Sub-Header content wrapper -->
+					<div class="ph-content-wrap d-flex">
+						<div class="container align-self-center">
+							<div class="row">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+
+									{% if currentCrumb.show_crumb %}
+										<!-- Breadcrumbs -->
+										<ul class="breadcrumbs fixclear">
+											{% set activeCrumb = '' %}
+											{% for crumb in breadcrumbs %}
+												{% if crumb.in_crumb_trail %}
+													{% if not loop.last and not crumb.crumb_disabled %}
+														<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+													{% else %}
+														<li class="active">{{crumb.title|__|upper}}</li>
+													{% endif %}
+												{% endif %}
+												{% if not loop.last %}
+													{% set activeCrumb = crumb %}
+												{% endif %}
+											{% endfor %}
+										</ul>
+										<!--/ Breadcrumbs -->
+									{% endif %}
+
+
+									<!-- Current date -->
+									<span id="current-date" class="subheader-currentdate">{{'now'|date(settings.dateformat)}}</span>
+									<!--/ Current date -->
+
+									<div class="clearfix"></div>
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<!-- Sub-header titles -->
+									<div class="subheader-titles">
+										<h2 class="subheader-maintitle">{{this.page.title|__}}</h2>
+									</div>
+									<!--/ Sub-header titles -->
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ .container .align-self-center -->
+					</div>
+					<!--/ Sub-Header content wrapper -->
+
+			<!-- Bottom mask style 7 -->
+			<div class="kl-bottommask kl-bottommask--mask7">
+				<svg width="767px" height="60px" class="kl-bottommask--mask7 screffect opacity3" viewBox="0 0 767 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#000" points="767 0 767 60 0 60 "></polygon>
+				</svg>
+				<svg width="767px" height="50px" class="kl-bottommask--mask7 mask-over" viewBox="0 0 767 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#fbfbfb" points="767 0 767 50 0 50 "></polygon>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 7 -->
+			{% if currentCrumb.show_crumb %}
+				<!-- Breadcrumb style 2 for bottom mask style 7 -->
+				<div class="container mb-40">
+					<div class="row">
+						<div class="col-sm-12">
+							<!-- Breadcrumb style 2 aligned right -->
+							<ul class="breadcrumbs2 white text-right kl-font-alt">
+								{% set activeCrumb = '' %}
+								{% for crumb in breadcrumbs %}
+									{% if crumb.in_crumb_trail %}
+										{% if not loop.last and not crumb.crumb_disabled %}
+											<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+										{% else %}
+											<li class="active"><span>{{crumb.title|__|upper}}</span></li>
+										{% endif %}
+									{% endif %}
+									{% if not loop.last %}
+										{% set activeCrumb = crumb %}
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+						<!--/ col-sm-12 -->
+					</div>
+					<!--/ row -->
+				</div>
+				<!--/ Breadcrumb style 2 for bottom mask style 7 -->
+			{% endif %}
+		</div>
+		<!--/ Page Sub-Header + mask style 6 -->
+
+		<!-- RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element section with custom paddings -->
+		<section class="hg_section pt-80 pb-100">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-sm-12 col-md-12 col-lg-6 mb-md-30">
+						<!-- Spacer with custom height -->
+						<div style="height: 50px;"></div>
+
+						<!-- Title element -->
+						<div class="kl-title-block">
+							<!-- Small Title -->
+							<h5 class="fs-normal fw-bold light-gray">
+								{{'company updates'|__}}
+							</h5>
+
+							<!-- Title -->
+							<h2 class="fs-l reset-line-height fw-normal mb-50">
+								<strong>{{'Our mobile Applications'|__}}</strong>
+							</h2>
+						</div>
+
+						<!-- Text box -->
+						<div class="text_box">
+
+							<p>
+								{{'Those app includes requesting a pickup, sending the shipment and follow-ups your shipments all over its way'|__}}
+							</p>
+							<p>
+								{{"we’ve been striving for better performance and we’re constantly adding more features. On top of checking their followed communities, users can now receive notifications, create new orders and better manage their shipments tracking features."|__}}
+							</p>
+						</div>
+						<!--/ Text box -->
+					</div>
+					<!--/ col-sm-12 col-md-12 col-lg-6 mb-md-30 -->
+
+					<div class="col-sm-12 col-md-12 col-lg-6">
+						<!-- RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element (left to right style) -->
+						<div class="el-devimages el-devimages--type-vector el-devimages--ltr">
+							<!-- Laptop -->
+							<div class="el-devimages__laptop">
+								<!-- Background image -->
+								<div class="el-devimages__laptop-img" style="background-image: url(./front/images/216h-lq.jpg);">
+								</div>
+								<!--/ Background image -->
+							</div>
+							<!--/ Laptop -->
+
+							<!-- Smartphone -->
+							<div class="el-devimages__smartphone">
+								<!-- Background image -->
+								<div class="el-devimages__smartphone-img" style="background-image: url(./front/images/circular-01.jpg);">
+								</div>
+								<!--/ Background image -->
+							</div>
+							<!--/ Smartphone -->
+						</div>
+						<!--/ RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element -->
+					</div>
+					<!--/ col-sm-12 col-md-12 col-lg-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ RIGHT SIDED VECTOR LAPTOP & SMARTPHONE section -->
+
+
+		<!-- Separator element - section with custom paddings -->
+		<section class="hg_section p-0">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Separator -->
+						<div class="hg_separator clearfix"></div>
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Separator element - section with custom paddings -->
+
+		<!-- Call to action element - section with custom paddings -->
+		<section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-8 col-lg-8">
+						<!-- Title element -->
+						<div class="kl-title-block">
+							<!-- Title with alternative font, custom size, theme color and bold style -->
+							<h3 class="tbk__title kl-font-alt fs-l fw-bold tcolor">
+								{{"DOWNLOAD THE MOBILE APPLICATIONS"|__}}
+							</h3>
+
+							<!-- Sub-title with custom size and thin style -->
+							<h4 class="tbk__subtitle fs-s fw-thin">
+								{{'Discover the Mobile Applications from our brands available on AppStore (IOS) and Google Play (Android).'|__}}
+							</h4>
+						</div>
+						<!--/ Title element -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-35 -->
+
+					<div class="col-sm-12 col-md-2 co-lg-2 d-flex align-self-center justify-content-center">
+						<!-- Button full color style -->
+						<a href="javaScript:;" target="_blank" title="" class="btn-element btn btn-fullcolor btn-md btn-fullwidth">
+							<span class="fas fa-cloud-download-alt white-icon mr-10"></span> <span>{{'IOS'|__}}</span>
+						</a>
+					</div>
+
+					<div class="col-sm-12 col-md-2 co-lg-2 d-flex align-self-center justify-content-center">
+						<!-- Button full color style -->
+						<a href="javaScript:;" target="_blank" class="btn-element btn btn-fullcolor btn-md btn-fullwidth" title="">
+							<span class="fas fa-cloud-download-alt white-icon mr-10"></span> <span>{{'ANDROID'|__}}</span>
+						</a>
+					</div>
+					<!--/ col-sm-12 col-md-3 co-lg-3 d-flex align-self-center justify-content-center -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Call to action element - section with custom paddings -->
+";s:5:"mtime";i:1575035854;s:6:"markup";s:8797:"<!-- Page Sub-Header + mask style 6 -->
+		<div id="page_header" class="page-subheader site-subheader-cst uh_hg_def_header_style maskcontainer--mask6">
+			<div class="bgback"></div>
+
+			<!-- Bakcground -->
+			<div class="kl-bg-source">
+				<!-- Background image -->
+				<div class="kl-bg-source__bgimage" style="background-image: url(./front/images/about-me.jpg); background-repeat: no-repeat; background-attachment: scroll; background-position-x: center; background-position-y: center; background-size: cover;">
+				</div>
+				<!--/ Background image -->
+
+				<!-- Gradient overlay -->
+				<div class="kl-bg-source__overlay" style="">
+				</div>
+				<!--/ Gradient overlay -->
+			</div>
+			<!--/ Bakcground -->
+
+			<!-- Animated Sparkles -->
+			<div class="th-sparkles"></div>
+			<!--/ Animated Sparkles -->
+
+					<!-- Sub-Header content wrapper -->
+					<div class="ph-content-wrap d-flex">
+						<div class="container align-self-center">
+							<div class="row">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+
+									{% if currentCrumb.show_crumb %}
+										<!-- Breadcrumbs -->
+										<ul class="breadcrumbs fixclear">
+											{% set activeCrumb = '' %}
+											{% for crumb in breadcrumbs %}
+												{% if crumb.in_crumb_trail %}
+													{% if not loop.last and not crumb.crumb_disabled %}
+														<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+													{% else %}
+														<li class="active">{{crumb.title|__|upper}}</li>
+													{% endif %}
+												{% endif %}
+												{% if not loop.last %}
+													{% set activeCrumb = crumb %}
+												{% endif %}
+											{% endfor %}
+										</ul>
+										<!--/ Breadcrumbs -->
+									{% endif %}
+
+
+									<!-- Current date -->
+									<span id="current-date" class="subheader-currentdate">{{'now'|date(settings.dateformat)}}</span>
+									<!--/ Current date -->
+
+									<div class="clearfix"></div>
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<!-- Sub-header titles -->
+									<div class="subheader-titles">
+										<h2 class="subheader-maintitle">{{this.page.title|__}}</h2>
+									</div>
+									<!--/ Sub-header titles -->
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ .container .align-self-center -->
+					</div>
+					<!--/ Sub-Header content wrapper -->
+
+			<!-- Bottom mask style 7 -->
+			<div class="kl-bottommask kl-bottommask--mask7">
+				<svg width="767px" height="60px" class="kl-bottommask--mask7 screffect opacity3" viewBox="0 0 767 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#000" points="767 0 767 60 0 60 "></polygon>
+				</svg>
+				<svg width="767px" height="50px" class="kl-bottommask--mask7 mask-over" viewBox="0 0 767 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#fbfbfb" points="767 0 767 50 0 50 "></polygon>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 7 -->
+			{% if currentCrumb.show_crumb %}
+				<!-- Breadcrumb style 2 for bottom mask style 7 -->
+				<div class="container mb-40">
+					<div class="row">
+						<div class="col-sm-12">
+							<!-- Breadcrumb style 2 aligned right -->
+							<ul class="breadcrumbs2 white text-right kl-font-alt">
+								{% set activeCrumb = '' %}
+								{% for crumb in breadcrumbs %}
+									{% if crumb.in_crumb_trail %}
+										{% if not loop.last and not crumb.crumb_disabled %}
+											<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+										{% else %}
+											<li class="active"><span>{{crumb.title|__|upper}}</span></li>
+										{% endif %}
+									{% endif %}
+									{% if not loop.last %}
+										{% set activeCrumb = crumb %}
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+						<!--/ col-sm-12 -->
+					</div>
+					<!--/ row -->
+				</div>
+				<!--/ Breadcrumb style 2 for bottom mask style 7 -->
+			{% endif %}
+		</div>
+		<!--/ Page Sub-Header + mask style 6 -->
+
+		<!-- RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element section with custom paddings -->
+		<section class="hg_section pt-80 pb-100">
+			<div class="container">
+				<div class="row">
+
+					<div class="col-sm-12 col-md-12 col-lg-6 mb-md-30">
+						<!-- Spacer with custom height -->
+						<div style="height: 50px;"></div>
+
+						<!-- Title element -->
+						<div class="kl-title-block">
+							<!-- Small Title -->
+							<h5 class="fs-normal fw-bold light-gray">
+								{{'company updates'|__}}
+							</h5>
+
+							<!-- Title -->
+							<h2 class="fs-l reset-line-height fw-normal mb-50">
+								<strong>{{'Our mobile Applications'|__}}</strong>
+							</h2>
+						</div>
+
+						<!-- Text box -->
+						<div class="text_box">
+
+							<p>
+								{{'Those app includes requesting a pickup, sending the shipment and follow-ups your shipments all over its way'|__}}
+							</p>
+							<p>
+								{{"we’ve been striving for better performance and we’re constantly adding more features. On top of checking their followed communities, users can now receive notifications, create new orders and better manage their shipments tracking features."|__}}
+							</p>
+						</div>
+						<!--/ Text box -->
+					</div>
+					<!--/ col-sm-12 col-md-12 col-lg-6 mb-md-30 -->
+
+					<div class="col-sm-12 col-md-12 col-lg-6">
+						<!-- RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element (left to right style) -->
+						<div class="el-devimages el-devimages--type-vector el-devimages--ltr">
+							<!-- Laptop -->
+							<div class="el-devimages__laptop">
+								<!-- Background image -->
+								<div class="el-devimages__laptop-img" style="background-image: url(./front/images/216h-lq.jpg);">
+								</div>
+								<!--/ Background image -->
+							</div>
+							<!--/ Laptop -->
+
+							<!-- Smartphone -->
+							<div class="el-devimages__smartphone">
+								<!-- Background image -->
+								<div class="el-devimages__smartphone-img" style="background-image: url(./front/images/circular-01.jpg);">
+								</div>
+								<!--/ Background image -->
+							</div>
+							<!--/ Smartphone -->
+						</div>
+						<!--/ RIGHT SIDED VECTOR LAPTOP & SMARTPHONE element -->
+					</div>
+					<!--/ col-sm-12 col-md-12 col-lg-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ RIGHT SIDED VECTOR LAPTOP & SMARTPHONE section -->
+
+
+		<!-- Separator element - section with custom paddings -->
+		<section class="hg_section p-0">
+			<div class="container">
+				<div class="row">
+					<div class="col-md-12 col-sm-12">
+						<!-- Separator -->
+						<div class="hg_separator clearfix"></div>
+					</div>
+					<!--/ col-md-12 col-sm-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Separator element - section with custom paddings -->
+
+		<!-- Call to action element - section with custom paddings -->
+		<section class="hg_section">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-8 col-lg-8">
+						<!-- Title element -->
+						<div class="kl-title-block">
+							<!-- Title with alternative font, custom size, theme color and bold style -->
+							<h3 class="tbk__title kl-font-alt fs-l fw-bold tcolor">
+								{{"DOWNLOAD THE MOBILE APPLICATIONS"|__}}
+							</h3>
+
+							<!-- Sub-title with custom size and thin style -->
+							<h4 class="tbk__subtitle fs-s fw-thin">
+								{{'Discover the Mobile Applications from our brands available on AppStore (IOS) and Google Play (Android).'|__}}
+							</h4>
+						</div>
+						<!--/ Title element -->
+					</div>
+					<!--/ col-sm-12 col-md-9 col-lg-9 mb-sm-35 -->
+
+					<div class="col-sm-12 col-md-2 co-lg-2 d-flex align-self-center justify-content-center">
+						<!-- Button full color style -->
+						<a href="javaScript:;" target="_blank" title="" class="btn-element btn btn-fullcolor btn-md btn-fullwidth">
+							<span class="fas fa-cloud-download-alt white-icon mr-10"></span> <span>{{'IOS'|__}}</span>
+						</a>
+					</div>
+
+					<div class="col-sm-12 col-md-2 co-lg-2 d-flex align-self-center justify-content-center">
+						<!-- Button full color style -->
+						<a href="javaScript:;" target="_blank" class="btn-element btn btn-fullcolor btn-md btn-fullwidth" title="">
+							<span class="fas fa-cloud-download-alt white-icon mr-10"></span> <span>{{'ANDROID'|__}}</span>
+						</a>
+					</div>
+					<!--/ col-sm-12 col-md-3 co-lg-3 d-flex align-self-center justify-content-center -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Call to action element - section with custom paddings -->";s:4:"code";s:21:"function onStart(){
+}";s:5:"title";s:12:"Applications";s:3:"url";s:13:"/applications";s:6:"layout";s:5:"front";s:9:"is_hidden";s:1:"0";s:4:"role";s:1:"0";s:10:"permission";s:1:"0";s:14:"anonymous_only";s:1:"1";s:11:"logged_only";s:1:"0";s:8:"child_of";s:4:"home";s:10:"hide_crumb";s:1:"0";s:18:"remove_crumb_trail";s:1:"0";s:14:"crumb_disabled";s:1:"0";s:7:"viewBag";a:0:{}}}

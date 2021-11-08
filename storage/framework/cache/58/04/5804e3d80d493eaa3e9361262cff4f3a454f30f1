@@ -1,0 +1,635 @@
+1578683967a:1:{s:9:"about.htm";a:18:{s:8:"fileName";s:9:"about.htm";s:7:"content";s:11990:"title = "About"
+url = "/about"
+layout = "front"
+is_hidden = 0
+role = 0
+permission = 0
+anonymous_only = 1
+logged_only = 0
+child_of = "home"
+hide_crumb = 0
+remove_crumb_trail = 0
+crumb_disabled = 0
+
+[viewBag]
+==
+<?php
+function onStart(){
+
+	$this['deliveried']		=	\Spot\Shipment\Models\Order::where('requested', 4)->count();
+	$this['in_progress']	=	\Spot\Shipment\Models\Order::whereNotIn('requested',[0,1,2,7,4,8])->count();
+    $this['employees']      =   \RainLab\User\Models\User::whereNotIn('role_id',[5])->select('id','name')->count();
+    $this['customers']      =   \RainLab\User\Models\User::where('role_id', 5)->count();
+}
+?>
+==
+<!-- Page Sub-Header + mask style 6 -->
+		<div id="page_header" class="page-subheader site-subheader-cst uh_hg_def_header_style maskcontainer--mask6">
+			<div class="bgback"></div>
+
+			<!-- Bakcground -->
+			<div class="kl-bg-source">
+				<!-- Background image -->
+				<div class="kl-bg-source__bgimage" style="background-image: url(./front/images/about-me.jpg); background-repeat: no-repeat; background-attachment: scroll; background-position-x: center; background-position-y: center; background-size: cover;">
+				</div>
+				<!--/ Background image -->
+
+				<!-- Gradient overlay -->
+				<div class="kl-bg-source__overlay" style="">
+				</div>
+				<!--/ Gradient overlay -->
+			</div>
+			<!--/ Bakcground -->
+
+			<!-- Animated Sparkles -->
+			<div class="th-sparkles"></div>
+			<!--/ Animated Sparkles -->
+
+					<!-- Sub-Header content wrapper -->
+					<div class="ph-content-wrap d-flex">
+						<div class="container align-self-center">
+							<div class="row">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+
+									{% if currentCrumb.show_crumb %}
+										<!-- Breadcrumbs -->
+										<ul class="breadcrumbs fixclear">
+											{% set activeCrumb = '' %}
+											{% for crumb in breadcrumbs %}
+												{% if crumb.in_crumb_trail %}
+													{% if not loop.last and not crumb.crumb_disabled %}
+														<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+													{% else %}
+														<li class="active">{{crumb.title|__|upper}}</li>
+													{% endif %}
+												{% endif %}
+												{% if not loop.last %}
+													{% set activeCrumb = crumb %}
+												{% endif %}
+											{% endfor %}
+										</ul>
+										<!--/ Breadcrumbs -->
+									{% endif %}
+
+
+									<!-- Current date -->
+									<span id="current-date" class="subheader-currentdate">{{'now'|date(settings.dateformat)}}</span>
+									<!--/ Current date -->
+
+									<div class="clearfix"></div>
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<!-- Sub-header titles -->
+									<div class="subheader-titles">
+										<h2 class="subheader-maintitle">{{this.page.title|__}}</h2>
+									</div>
+									<!--/ Sub-header titles -->
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ .container .align-self-center -->
+					</div>
+					<!--/ Sub-Header content wrapper -->
+
+			<!-- Bottom mask style 7 -->
+			<div class="kl-bottommask kl-bottommask--mask7">
+				<svg width="767px" height="60px" class="kl-bottommask--mask7 screffect opacity3" viewBox="0 0 767 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#000" points="767 0 767 60 0 60 "></polygon>
+				</svg>
+				<svg width="767px" height="50px" class="kl-bottommask--mask7 mask-over" viewBox="0 0 767 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#fbfbfb" points="767 0 767 50 0 50 "></polygon>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 7 -->
+			{% if currentCrumb.show_crumb %}
+				<!-- Breadcrumb style 2 for bottom mask style 7 -->
+				<div class="container mb-40">
+					<div class="row">
+						<div class="col-sm-12">
+							<!-- Breadcrumb style 2 aligned right -->
+							<ul class="breadcrumbs2 white text-right kl-font-alt">
+								{% set activeCrumb = '' %}
+								{% for crumb in breadcrumbs %}
+									{% if crumb.in_crumb_trail %}
+										{% if not loop.last and not crumb.crumb_disabled %}
+											<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+										{% else %}
+											<li class="active"><span>{{crumb.title|__|upper}}</span></li>
+										{% endif %}
+									{% endif %}
+									{% if not loop.last %}
+										{% set activeCrumb = crumb %}
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+						<!--/ col-sm-12 -->
+					</div>
+					<!--/ row -->
+				</div>
+				<!--/ Breadcrumb style 2 for bottom mask style 7 -->
+			{% endif %}
+		</div>
+		<!--/ Page Sub-Header + mask style 6 -->
+
+
+		<!-- Progress bars skill section with custom paddings -->
+		<section class="hg_section pt-70 pb-120">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<h4 class="fw-semibold">
+							{{"Why us?"|__}}
+						</h4><br />
+
+						<p>
+							{{"We are proud to provide the best service and the lowest prices of the market, the fastest service the best price A great experience in the field of domestic or international shipping of all kinds."|__}}
+						</p>
+
+						<p>
+							{{"And we offer our services to companies and individuals below the market price, we provide door to door service
+							Punctuality and lack of time are essential."|__}}
+						</p>
+
+						<p>
+							{{"Optimized shortening of time during all phases of charging."|__}}
+						</p>
+						<p>
+							{{"We are always ready to guarantee and confirm a standard shipping time within our offers."|__}}
+						</p>
+						<p>
+							{{"Our specialty is to provide shipping options to the customer according to the speed required for shipment or according to the price range proposed."|__}}
+						</p>
+						<p>
+							{{"We are committed to carrying out our business properly and safely. Our decisions and actions are within the framework of ethical values ​​and requirements with honesty and transparency in everything we do."|__}}
+						</p>
+
+					</div>
+					<!--/ col-sm-12 col-md-6 col-lg-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Progress bars skill section with custom paddings -->
+
+		<!-- Numbers counting element section with custom background color and paddings -->
+		<section class="hg_section bg-lightgray pt-80 pb-80">
+			<div class="container">
+				<div class="row">
+					<!-- Counter numbers element -->
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-14 -->
+							<span class="kl-icon icon-gi-ico-14 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{employees}}" data-speed="5">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'EMPLOYEES'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-5 -->
+							<span class="kl-icon icon-gi-ico-5 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{in_progress}}" data-speed="5">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'SHIPMENT IN PROGRESS'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-process3 -->
+							<span class="kl-icon icon-process3 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{deliveried}}" data-speed="1">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'SHIPMENT DELIVERIED'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-6 -->
+							<span class="kl-icon icon-gi-ico-6 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{customers}}" data-speed="1">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{"HAPPY CUSTOMERS"|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center -->
+					<!--/ Counter numbers element -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Numbers counting element section with custom background color and paddings -->
+
+		<!-- Call out banner style 3 section with white background color and custom top padding -->
+		<section class="hg_section pt-60 bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<!-- Call-out banner element - style 3 -->
+						<div class="callout-banner">
+							<div class="row">
+								<div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+									<!-- Title -->
+									<h3 class="m_title">
+										<span class="fw-thin">{{ settings.company.title|__ }} {{'A shipping company, always striving to provide its services within the fastest time available'|__}}.</span>
+									</h3>
+									<!--/ Title -->
+
+									<p>
+										{{"We continuously strive to achieve the highest possible standards in our day-to-day business in the quality of our services. We aim to exceed quality standards and strongly believe that excellence is enhanced through the dedication and commitment of our technical staff"|__}}.
+									</p>
+								</div>
+								<!--/ col-sm-12 col-md-9 col-lg-9 col-xl-10 -->
+
+								<div class="col-sm-12 col-md-3 col-lg-3 col-xl-2 d-flex justify-content-center align-self-center">
+									<!-- Circle hover link style 3 -->
+									<a href="{{url('contact')}}" class="circlehover with-symbol style3" data-size="" data-position="top-left" data-align="right">
+										<!-- Text -->
+										<span class="text">
+											{{'FIND OUT'|__}} <span class="fw-normal">{{'MORE'|__}}</span>
+										</span>
+										<!--/ Text -->
+
+										<!-- Image/Icon -->
+										<span class="symbol">
+											<img src="./front/images/callout2.svg" alt="">
+										</span>
+										<!--/ Image/Icon -->
+
+										<!-- Play icon - hidden default -->
+										<div class="triangle">
+											<span class="play-icon"></span>
+										</div>
+										<!--/ Play icon - hidden default -->
+									</a>
+									<!--/ Circle hover link style 3 -->
+								</div>
+								<!--/ col-sm-12 col-md-3 col-lg-3 col-xl-2 align-self-center -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ Call-out banner element - style 3 -->
+					</div>
+					<!--/ col-sm-12 col-md-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Call out banner style 3 section with white background color and custom top padding -->
+
+{% put scripts %}<!-- JS FILES // Loaded on this page -->
+<!-- Required js script file for Counter numbers element -->
+<script type="text/javascript" src="./front/js/plugins/wpk-counter.js"></script>
+<!-- Required js trigger script file for Counter numbers element -->
+<script type="text/javascript" src="./front/js/trigger/wpk-counter-init.js"></script>
+{% endput %}
+";s:5:"mtime";i:1575035854;s:6:"markup";s:11353:"<!-- Page Sub-Header + mask style 6 -->
+		<div id="page_header" class="page-subheader site-subheader-cst uh_hg_def_header_style maskcontainer--mask6">
+			<div class="bgback"></div>
+
+			<!-- Bakcground -->
+			<div class="kl-bg-source">
+				<!-- Background image -->
+				<div class="kl-bg-source__bgimage" style="background-image: url(./front/images/about-me.jpg); background-repeat: no-repeat; background-attachment: scroll; background-position-x: center; background-position-y: center; background-size: cover;">
+				</div>
+				<!--/ Background image -->
+
+				<!-- Gradient overlay -->
+				<div class="kl-bg-source__overlay" style="">
+				</div>
+				<!--/ Gradient overlay -->
+			</div>
+			<!--/ Bakcground -->
+
+			<!-- Animated Sparkles -->
+			<div class="th-sparkles"></div>
+			<!--/ Animated Sparkles -->
+
+					<!-- Sub-Header content wrapper -->
+					<div class="ph-content-wrap d-flex">
+						<div class="container align-self-center">
+							<div class="row">
+								<div class="col-sm-12 col-md-6 col-lg-6">
+
+									{% if currentCrumb.show_crumb %}
+										<!-- Breadcrumbs -->
+										<ul class="breadcrumbs fixclear">
+											{% set activeCrumb = '' %}
+											{% for crumb in breadcrumbs %}
+												{% if crumb.in_crumb_trail %}
+													{% if not loop.last and not crumb.crumb_disabled %}
+														<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+													{% else %}
+														<li class="active">{{crumb.title|__|upper}}</li>
+													{% endif %}
+												{% endif %}
+												{% if not loop.last %}
+													{% set activeCrumb = crumb %}
+												{% endif %}
+											{% endfor %}
+										</ul>
+										<!--/ Breadcrumbs -->
+									{% endif %}
+
+
+									<!-- Current date -->
+									<span id="current-date" class="subheader-currentdate">{{'now'|date(settings.dateformat)}}</span>
+									<!--/ Current date -->
+
+									<div class="clearfix"></div>
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+
+								<div class="col-sm-12 col-md-6 col-lg-6">
+									<!-- Sub-header titles -->
+									<div class="subheader-titles">
+										<h2 class="subheader-maintitle">{{this.page.title|__}}</h2>
+									</div>
+									<!--/ Sub-header titles -->
+								</div>
+								<!--/ col-sm-12 col-md-6 col-lg-6 -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ .container .align-self-center -->
+					</div>
+					<!--/ Sub-Header content wrapper -->
+
+			<!-- Bottom mask style 7 -->
+			<div class="kl-bottommask kl-bottommask--mask7">
+				<svg width="767px" height="60px" class="kl-bottommask--mask7 screffect opacity3" viewBox="0 0 767 60" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#000" points="767 0 767 60 0 60 "></polygon>
+				</svg>
+				<svg width="767px" height="50px" class="kl-bottommask--mask7 mask-over" viewBox="0 0 767 50" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" preserveAspectRatio="none">
+					<polygon fill="#fbfbfb" points="767 0 767 50 0 50 "></polygon>
+				</svg>
+			</div>
+			<!--/ Bottom mask style 7 -->
+			{% if currentCrumb.show_crumb %}
+				<!-- Breadcrumb style 2 for bottom mask style 7 -->
+				<div class="container mb-40">
+					<div class="row">
+						<div class="col-sm-12">
+							<!-- Breadcrumb style 2 aligned right -->
+							<ul class="breadcrumbs2 white text-right kl-font-alt">
+								{% set activeCrumb = '' %}
+								{% for crumb in breadcrumbs %}
+									{% if crumb.in_crumb_trail %}
+										{% if not loop.last and not crumb.crumb_disabled %}
+											<li><a href="{{crumb.baseFileName | page}}">{{crumb.title|__|upper}}</a></li>
+										{% else %}
+											<li class="active"><span>{{crumb.title|__|upper}}</span></li>
+										{% endif %}
+									{% endif %}
+									{% if not loop.last %}
+										{% set activeCrumb = crumb %}
+									{% endif %}
+								{% endfor %}
+							</ul>
+						</div>
+						<!--/ col-sm-12 -->
+					</div>
+					<!--/ row -->
+				</div>
+				<!--/ Breadcrumb style 2 for bottom mask style 7 -->
+			{% endif %}
+		</div>
+		<!--/ Page Sub-Header + mask style 6 -->
+
+
+		<!-- Progress bars skill section with custom paddings -->
+		<section class="hg_section pt-70 pb-120">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12 col-lg-12">
+						<h4 class="fw-semibold">
+							{{"Why us?"|__}}
+						</h4><br />
+
+						<p>
+							{{"We are proud to provide the best service and the lowest prices of the market, the fastest service the best price A great experience in the field of domestic or international shipping of all kinds."|__}}
+						</p>
+
+						<p>
+							{{"And we offer our services to companies and individuals below the market price, we provide door to door service
+							Punctuality and lack of time are essential."|__}}
+						</p>
+
+						<p>
+							{{"Optimized shortening of time during all phases of charging."|__}}
+						</p>
+						<p>
+							{{"We are always ready to guarantee and confirm a standard shipping time within our offers."|__}}
+						</p>
+						<p>
+							{{"Our specialty is to provide shipping options to the customer according to the speed required for shipment or according to the price range proposed."|__}}
+						</p>
+						<p>
+							{{"We are committed to carrying out our business properly and safely. Our decisions and actions are within the framework of ethical values ​​and requirements with honesty and transparency in everything we do."|__}}
+						</p>
+
+					</div>
+					<!--/ col-sm-12 col-md-6 col-lg-6 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Progress bars skill section with custom paddings -->
+
+		<!-- Numbers counting element section with custom background color and paddings -->
+		<section class="hg_section bg-lightgray pt-80 pb-80">
+			<div class="container">
+				<div class="row">
+					<!-- Counter numbers element -->
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-14 -->
+							<span class="kl-icon icon-gi-ico-14 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{employees}}" data-speed="5">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'EMPLOYEES'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-5 -->
+							<span class="kl-icon icon-gi-ico-5 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{in_progress}}" data-speed="5">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'SHIPMENT IN PROGRESS'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-process3 -->
+							<span class="kl-icon icon-process3 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{deliveried}}" data-speed="1">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{'SHIPMENT DELIVERIED'|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center mb-md-50 -->
+
+					<div class="col-sm-6 col-md-6 col-lg-3 justify-content-center">
+						<div class="fun-fact jsf-block">
+							<!-- Icon .icon-gi-ico-6 -->
+							<span class="kl-icon icon-gi-ico-6 tcolor fs-xxl"></span>
+
+							<!-- Number -->
+							<span class="fun-number fw-thin counter" data-count-to="{{customers}}" data-speed="1">
+							</span>
+
+							<!-- Title -->
+							<span class="fun-thing topline fw-bold mt-40">
+								{{"HAPPY CUSTOMERS"|__}}
+							</span>
+						</div>
+						<!--/ .fun-fact .jsf-block -->
+					</div>
+					<!--/ col-sm-6 col-md-6 col-lg-3 justify-content-center -->
+					<!--/ Counter numbers element -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Numbers counting element section with custom background color and paddings -->
+
+		<!-- Call out banner style 3 section with white background color and custom top padding -->
+		<section class="hg_section pt-60 bg-white">
+			<div class="container">
+				<div class="row">
+					<div class="col-sm-12 col-md-12">
+						<!-- Call-out banner element - style 3 -->
+						<div class="callout-banner">
+							<div class="row">
+								<div class="col-sm-12 col-md-9 col-lg-9 col-xl-10">
+									<!-- Title -->
+									<h3 class="m_title">
+										<span class="fw-thin">{{ settings.company.title|__ }} {{'A shipping company, always striving to provide its services within the fastest time available'|__}}.</span>
+									</h3>
+									<!--/ Title -->
+
+									<p>
+										{{"We continuously strive to achieve the highest possible standards in our day-to-day business in the quality of our services. We aim to exceed quality standards and strongly believe that excellence is enhanced through the dedication and commitment of our technical staff"|__}}.
+									</p>
+								</div>
+								<!--/ col-sm-12 col-md-9 col-lg-9 col-xl-10 -->
+
+								<div class="col-sm-12 col-md-3 col-lg-3 col-xl-2 d-flex justify-content-center align-self-center">
+									<!-- Circle hover link style 3 -->
+									<a href="{{url('contact')}}" class="circlehover with-symbol style3" data-size="" data-position="top-left" data-align="right">
+										<!-- Text -->
+										<span class="text">
+											{{'FIND OUT'|__}} <span class="fw-normal">{{'MORE'|__}}</span>
+										</span>
+										<!--/ Text -->
+
+										<!-- Image/Icon -->
+										<span class="symbol">
+											<img src="./front/images/callout2.svg" alt="">
+										</span>
+										<!--/ Image/Icon -->
+
+										<!-- Play icon - hidden default -->
+										<div class="triangle">
+											<span class="play-icon"></span>
+										</div>
+										<!--/ Play icon - hidden default -->
+									</a>
+									<!--/ Circle hover link style 3 -->
+								</div>
+								<!--/ col-sm-12 col-md-3 col-lg-3 col-xl-2 align-self-center -->
+							</div>
+							<!--/ row -->
+						</div>
+						<!--/ Call-out banner element - style 3 -->
+					</div>
+					<!--/ col-sm-12 col-md-12 -->
+				</div>
+				<!--/ row -->
+			</div>
+			<!--/ container -->
+		</section>
+		<!--/ Call out banner style 3 section with white background color and custom top padding -->
+
+{% put scripts %}<!-- JS FILES // Loaded on this page -->
+<!-- Required js script file for Counter numbers element -->
+<script type="text/javascript" src="./front/js/plugins/wpk-counter.js"></script>
+<!-- Required js trigger script file for Counter numbers element -->
+<script type="text/javascript" src="./front/js/trigger/wpk-counter-init.js"></script>
+{% endput %}";s:4:"code";s:413:"function onStart(){
+
+	$this['deliveried']		=	\Spot\Shipment\Models\Order::where('requested', 4)->count();
+	$this['in_progress']	=	\Spot\Shipment\Models\Order::whereNotIn('requested',[0,1,2,7,4,8])->count();
+    $this['employees']      =   \RainLab\User\Models\User::whereNotIn('role_id',[5])->select('id','name')->count();
+    $this['customers']      =   \RainLab\User\Models\User::where('role_id', 5)->count();
+}";s:5:"title";s:5:"About";s:3:"url";s:6:"/about";s:6:"layout";s:5:"front";s:9:"is_hidden";s:1:"0";s:4:"role";s:1:"0";s:10:"permission";s:1:"0";s:14:"anonymous_only";s:1:"1";s:11:"logged_only";s:1:"0";s:8:"child_of";s:4:"home";s:10:"hide_crumb";s:1:"0";s:18:"remove_crumb_trail";s:1:"0";s:14:"crumb_disabled";s:1:"0";s:7:"viewBag";a:0:{}}}
